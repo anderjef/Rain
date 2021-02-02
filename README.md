@@ -35,12 +35,12 @@ Current version: 0.1.0 <br>
 Sit back, relax, and enjoy!
 
 ### Executables
-- [32-bit Linux](https://github.com/anderjef/Rain/application.linux32/Rain)
-- [64-bit Linux](https://github.com/anderjef/Rain/application.linux64/Rain)
-- [ARM 64-bit Linux](https://github.com/anderjef/Rain/application.linux-arm64/Rain)
-- [Hard Float ARMv6 Linux](https://github.com/anderjef/Rain/application.linux-armv6hf/Rain)
-- [32-bit Windows](https://github.com/anderjef/Rain/application.windows32/Rain.exe)
-- [64-bit Windows](https://github.com/anderjef/Rain/application.windows64/Rain.exe)
+- [32-bit Linux](https://github.com/anderjef/Rain/tree/main/application.linux32/Rain)
+- [64-bit Linux](https://github.com/anderjef/Rain/tree/main/application.linux64/Rain)
+- [ARM 64-bit Linux](https://github.com/anderjef/Rain/tree/main/application.linux-arm64/Rain)
+- [Hard Float ARMv6 Linux](https://github.com/anderjef/Rain/tree/main/application.linux-armv6hf/Rain)
+- [32-bit Windows](https://github.com/anderjef/Rain/tree/main/application.windows32/Rain.exe)
+- [64-bit Windows](https://github.com/anderjef/Rain/tree/main/application.windows64/Rain.exe)
 
 ## Contributions
 - Jeffrey Andersen - developer

@@ -27,9 +27,9 @@ Programming language(s):
 ## Usage
 ### Invokation
 1. Method 1
-Download the appropriate [ZIP](https://github.com/anderjef/Rain/archive/Rain.zip) then invoke the corresponding [executable](#Executables). Unless using 64-bit Windows, install or have installed [Java 8](https://java.com/en/download/).
+	- Download the appropriate [ZIP](https://github.com/anderjef/Rain/archive/Rain.zip) then invoke the corresponding [executable](#Executables). Unless using 64-bit Windows, install or have installed [Java 8](https://java.com/en/download/).
 2. Method 2
-See [Installation](#Installation).
+	- See [Installation](#Installation).
 
 ### Operation
 Sit back, relax, and enjoy!

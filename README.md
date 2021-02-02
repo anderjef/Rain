@@ -1,10 +1,10 @@
 # Rain
 
 ## Description
-This program produces an animation of rainfall.
-Start date: September 12, 2019
-Current version: 0.1.0
-Programming language(s):
+This program produces an animation of rainfall. <br>
+Start date: September 12, 2019 <br>
+Current version: 0.1.0 <br>
+#### Programming language(s):
 - Processing (Java)
 	- [Rain.pde](Rain.pde) - main program entrance sets up canvas and executes animation steps
 	- [Drop.pde](Drop.pde) - defines Drop class/object

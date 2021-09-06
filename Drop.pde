@@ -1,4 +1,4 @@
-// Jeffrey Andersen
+//Jeffrey Andersen
 
 class Drop {
   float x;

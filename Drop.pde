@@ -1,55 +1,52 @@
 //Jeffrey Andersen
 
 class Drop {
-  float x;
-  float y;
-  float r;
-  float fallVelocity;
-  float gravity = 0.4;
-  boolean splashMode;
+  PVector pos; //position
+  float r; //radius
+  PVector v; //velocity
   int splashAge;
   
   Drop() {
-    x = random(width);
-    y = random(-height, height);
-    r = random(4, 10);
-    fallVelocity = random(2, 4);
+    pos = new PVector(random(width), sq(random(sqrt(2 * height))) - height); //initially fill screen with drops (with height distributed according to statistical steady-state 2nd-power curve)
+    //r = random(minRadius, maxRadius); //deprecated for not showing the initial frames of animation
+    v = new PVector(0, gravity * sqrt((pos.y + random(1) * height) / gravity)); //velocity equals acceleration times time (which is derived by working backwards from randomized starting height (relative to ground), initial velocity, and acceleration); important to have despite simulating frames of animation before activating the display so as to keep drops from being reset closer in time to each other (if velocity were initialized to zero)
     splashAge = 0;
   }
   
   void update() {
+    if (splashAge < maxSplashAge) {
+      pos.y += v.y;
+      v.y += gravity;
+    }
     if (splashAge == 0) {
-      y += fallVelocity;
-      fallVelocity += gravity;
-      if (y > height + r / 2) {
-        y = height + r / 2;
+      if (pos.y > height) {
+        pos.y = height;
         splashAge++;
-        fallVelocity += random(32);
+        float splashAngle = random(PI / 2);
+        v.set(v.y * cos(splashAngle), v.y * -sin(splashAngle));
+        v.mult(random(0.8)); //0.8 here was experimentally determined to be decent; energy lost to collision with the ground (splash)
       }
     }
-    else if (splashAge < fallVelocity / 2) {
-      y -= fallVelocity / 4 - splashAge;
+    else if (splashAge < maxSplashAge) {
       splashAge++;
+      r *= dropSizeDecayFactor; //raindrops decay after splash
     }
     else {
-      x = random(width);
-      y = random(-height / 2, 0);
-      r = random(4, 10);
-      fallVelocity = random(0, 8);
-      splashAge = 0;
+      pos = new PVector(random(width), random(-height, -r));
+      r = random(minRadius, maxRadius); //reset
+      v.set(0, 0); //reset
+      splashAge = 0; //reset
     }
   }
   
   void show() {
-    noStroke();
+    fill(0, 127, 255, 255 - splashAge * (255 / v.y)); //raindrops decay after splash //future consideration: allow for customizing fill color
     if (splashAge > 0) {
-      fill(0, 127, 255, 256 - 256 / fallVelocity * splashAge);
-      ellipse(x - 3 * splashAge, y, r / 2, r / 2);
-      ellipse(x + 3 * splashAge, y, r / 2, r / 2);
+      circle(pos.x - v.x * splashAge + (pos.x - v.x * splashAge < 0 ? width : 0), pos.y, r); //splashes wrap around the edges
+      circle(pos.x + v.x * splashAge - (pos.x + v.x * splashAge > width ? width : 0), pos.y, r); //splashes wrap around the edges
     }
     else {
-      fill(0, 127, 255);
-      ellipse(x, y, r, r);
+      circle(pos.x, pos.y, 2 * r);
     }
   }
 }
